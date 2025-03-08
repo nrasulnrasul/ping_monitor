@@ -6,7 +6,6 @@ __pycache__/
 *.pyd
 
 # Ignore lock files and cache
-poetry.lock
 .pytest_cache/
 
 # Ignore IDE-specific files
