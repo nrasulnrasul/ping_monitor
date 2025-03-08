@@ -79,7 +79,11 @@ jobs:
     needs: details
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
       - uses: actions/checkout@v2
+
+      - name: Verify poetry.lock exists
+        run: ls -l **/poetry.lock || echo "poetry.lock not found!"
 
       - name: Set up Python
         uses: actions/setup-python@v4
