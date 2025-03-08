@@ -1,0 +1,19 @@
+# Ignore virtual environments
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore lock files and cache
+poetry.lock
+.pytest_cache/
+
+# Ignore IDE-specific files
+.vscode/
+.idea/
+
+# Ignore build artifacts
+dist/
+build/
+*.egg-info/

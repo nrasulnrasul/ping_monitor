@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file>icons/add.svg</file>
+        <file>icons/delete.svg</file>
+        <file>icons/signal.svg</file>
+    </qresource>
+    <qresource prefix="/qml">
+        <file>qml/ItemDelegate.qml</file>
+        <file>qml/ListHeader.qml</file>
+        <file>qml/MainMenu.qml</file>
+        <file>qml/Main.qml</file>
+        <file>qml/PopupDialog.qml</file>
+    </qresource>
+</RCC>
