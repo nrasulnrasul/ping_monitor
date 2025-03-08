@@ -10,18 +10,18 @@ on:
       tag_name:
         description: 'Tag name to simulate (e.g., v1.0.0-release)'
         required: true
-        default: 'v1.0.0-release'
+        default: 'v0.1.0-release'
 
 jobs:
   details:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     outputs:
       package_name: ${{ steps.package_information.outputs.package_name }}
       new_version: ${{ steps.release.outputs.new_version }}
       suffix: ${{ steps.release.outputs.suffix }}
       tag_name: ${{ steps.release.outputs.tag_name }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Extract tag and Details
         id: release
         run: |
@@ -58,7 +58,7 @@ jobs:
 
   check_pypi:
     needs: details
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Fetch information from PyPI
         run: |
@@ -82,15 +82,14 @@ jobs:
 
   setup_and_build:
     needs: details
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: Set up Python and Install Poetry
         uses: actions/setup-python@v4
         with:
           python-version: "3.12"
-          cache: "poetry"
 
       - name: Install Poetry
         run: |
@@ -109,7 +108,7 @@ jobs:
         run: poetry build
 
       - name: Upload artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: dist
           path: dist/
@@ -117,7 +116,7 @@ jobs:
   pypi_publish:
     name: Upload release to PyPI
     needs: [setup_and_build, details]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     environment:
       name: release
     permissions:
@@ -126,7 +125,7 @@ jobs:
 
     steps:
       - name: Download artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: dist
           path: dist/
