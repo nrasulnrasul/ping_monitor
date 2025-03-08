@@ -5,6 +5,12 @@ on:
     tags:
       - "*-release"
       - "*-beta"
+  workflow_dispatch:
+    inputs:
+      tag_name:
+        description: 'Tag name to simulate (e.g., v1.0.0-release)'
+        required: true
+        default: 'v1.0.0-release'
 
 jobs:
   details:
