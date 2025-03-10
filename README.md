@@ -1,18 +1,22 @@
 # Ping Monitor
 
 - [Introduction](#introduction)
-- [Running the app](#running)
+- [Running the app](#running-the-app)
 
-<h2 id="introduction">Introduction</h2>
-GUI app to check if the connected devices are communication or not.
+## Introduction
+GUI app to check if the connected devices are communicating or not.
 
-![Example Image](doc/images/main_window.png)
+![App Screenshot](doc/images/main_window.png)
 
-<h2 id="running">Running the app</h2>
+## Running the app
 
+### Run the app from sources
 ```bash
- git clone https://github.com/nrasulnrasul/ping_monitor.git
- cd ping_monitor/
- poetry install
- poetry run ping_monitor
-```
+# Install Poetry
+sudo apt install python3-poetry
+
+# Clone the source and install dependencies
+git clone https://github.com/nrasulnrasul/ping_monitor.git
+cd ping_monitor/
+poetry install
+poetry run ping_monitor
