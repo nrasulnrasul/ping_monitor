@@ -1,24 +1,17 @@
-[project]
+[tool.poetry]
 name = "ping-monitor"
 version = "0.1.0"
-description = ""
-authors = [
-    {name = "Nayabrasul Shaik",email = "rasulnrasul@gmail.com"}
-]
+description = "GUI app to check if the connected devices are communicating or not."
+authors = ["Nayabrasul Shaik <rasulnrasul@gmail.com>"]
 readme = "README.md"
-requires-python = ">=3.12,<3.14"
-dependencies = [
-    "pyqt6 (>=6.8.1,<7.0.0)",
-    "coverage (>=7.6.12,<8.0.0)",
-    "pyside6 (>=6.8.2.1,<7.0.0.0)"
-]
+packages = [{ include = "ping_monitor", from = "src" }]
+include = ["resources/qml/**/*", "resources/icons/**/*"]
+classifiers = ["Programming Language :: Python :: 3"]
 
-[tool.poetry]
-packages = [{include = "ping_monitor", from = "src"}]
-include = [
-  'resources/qml/**/*',
-  'resources/icons/**/*'
-]
+[tool.poetry.dependencies]
+python = ">=3.12,<3.14"
+pyqt6 = ">=6.8.1,<7.0.0"
+coverage = ">=7.6.12,<8.0.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.4"
@@ -27,12 +20,12 @@ pyyaml = "^6.0.2"
 lark = "^1.2.2"
 flake8 = "^7.1.2"
 
+[tool.poetry.scripts]
+ping_monitor = "ping_monitor.main:main"
+
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.pytest.ini_options]
-addopts = "--cov=app --cov-report=term --cov-report=html"
-
-[tool.poetry.scripts]
-ping_monitor = "ping_monitor.main:main"
+addopts = "--cov=ping_monitor --cov-report=term --cov-report=html"
